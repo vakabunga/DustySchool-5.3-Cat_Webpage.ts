@@ -1,0 +1,25 @@
+{
+    "name": "dustyschool-5.3-cat_webpage.ts",
+    "version": "1.0.0",
+    "description": "API homework. Task 1 in TypeScript",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rm -rf dist && mkdir dist && cp ./src/index.html ./dist && cp ./src/style.css ./dist && tsc",
+        "start": "npx http-server ./dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vakabunga/DustySchool-5.3-Cat_Webpage.ts.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/vakabunga/DustySchool-5.3-Cat_Webpage.ts/issues"
+    },
+    "homepage": "https://github.com/vakabunga/DustySchool-5.3-Cat_Webpage.ts#readme",
+    "devDependencies": {
+        "typescript": "^5.8.3"
+    }
+}
