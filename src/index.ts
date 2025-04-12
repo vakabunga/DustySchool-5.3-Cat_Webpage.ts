@@ -9,16 +9,10 @@ type CatImage = {
 
 const app: HTMLElement = document.body;
 const catList: HTMLSelectElement = document.createElement('select');
+catList.add(new Option('Choose cat breed', '0'));
 const catImageContainer: HTMLDivElement = document.createElement('div');
 catImageContainer.classList.add('cat-image-container');
 const notFoundImageUrl: string = 'https://avatars.mds.yandex.net/i?id=526a3bced1959c262520a44dcca2931b_l-12305949-images-thumbs&n=13';
-
-const catBreeds: CatBreed[] = [
-    {
-        id: '0',
-        name: 'Choose cat breed',
-    },
-];
 
 fetch('https://api.thecatapi.com/v1/breeds', {
     headers: {
@@ -28,15 +22,7 @@ fetch('https://api.thecatapi.com/v1/breeds', {
     .then((response) => response.json())
     .then((data: []) => {
         data.forEach((elem: CatBreed) => {
-            const breed: CatBreed = {
-                id: elem.id,
-                name: elem.name,
-            };
-            catBreeds.push(breed);
-        });
-
-        catBreeds.forEach(({ id, name }) => {
-            const option = new Option(name, id);
+            const option = new Option(elem.name, elem.id);
             catList.add(option);
         });
 
