@@ -14,13 +14,22 @@ const catImageContainer: HTMLDivElement = document.createElement('div');
 catImageContainer.classList.add('cat-image-container');
 const notFoundImageUrl: string = 'https://avatars.mds.yandex.net/i?id=526a3bced1959c262520a44dcca2931b_l-12305949-images-thumbs&n=13';
 
+const DEFAULT_BREED = '0';
+
+const catBreeds: CatBreed[] = [
+    {
+        id: DEFAULT_BREED,
+        name: 'Choose cat breed',
+    },
+];
+
 fetch('https://api.thecatapi.com/v1/breeds', {
     headers: {
         'x-api-key': API_KEY,
     },
 })
     .then((response) => response.json())
-    .then((data: []) => {
+    .then((data: CatBreed[]) => {
         data.forEach((elem: CatBreed) => {
             const option = new Option(elem.name, elem.id);
             catList.add(option);
@@ -31,7 +40,7 @@ fetch('https://api.thecatapi.com/v1/breeds', {
     });
 
 catList.addEventListener('change', () => {
-    if (catList.value === '0') {
+    if (catList.value === DEFAULT_BREED) {
         return;
     }
 
